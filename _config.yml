@@ -1,0 +1,3 @@
+name: Venky Govind
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
