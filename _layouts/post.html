@@ -22,8 +22,11 @@ notes: active
 			<hr>
 
 			<!-- Post comments -->
-			<div class="notecomments">
-				{% include disqus.html %}	 
-			</div>
+			{% if page.comments %} 
+				<div class="notecomments">
+					{% include disqus.html %}	 
+				</div>
+			{% endif %}
+			
 		</div><!-- / .note .single -->
 </div><!-- /.notes -->
