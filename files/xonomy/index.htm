@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+  div.scroll-box {
+  border: 1px solid black;
+  height: 75%;
+  overflow: scroll;
+  font-family: sans-serif;
+  line-height: 1.7em;
+  }
+  html, body{
+    height: 100%;
+  }
+</style>
+
+<script type="text/javascript" src="jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="xonomy.js"></script>
+<link type="text/css" rel="stylesheet" href="xonomy.css"/>
+<script type="text/javascript">
+var file_content= '';
+
+function disableBtn() {
+    document.getElementById("myBtn").disabled = true;
+}
+
+function undisableBtn() {
+    document.getElementById("myBtn").disabled = false;
+}
+
+var openFile = function(event) {
+        var input = event.target;
+        var reader = new FileReader();
+        reader.onload = function(event){
+          var file_content = reader.result;
+          console.log(reader.result.substring(0, 200));
+          start(file_content);
+        };
+        reader.readAsText(input.files[0]);
+      };
+
+function start(file_content) {
+undisableBtn();
+var docSpec={
+	onchange: function(){
+		console.log("I been changed now!")
+	},
+	validate: function(obj){
+		console.log("I be validatin' now!")
+	},
+	elements: {
+		"launch": {
+			menu: [{
+				caption: "Append a <group>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<group/>"
+				},
+				{
+				caption: "Append an <include>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<include file='file_name'/>"
+				},
+				{
+				caption: "Append an <arg>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<arg name='some_name' default='default_value' />"
+				}]
+			},
+		"master": {
+			menu: [{
+				caption: "Delete <master>",
+				action: Xonomy.deleteElement
+			}],
+			attributes: {
+			"auto": {
+				asker: Xonomy.askPicklist,
+				askerParameter: ["start", "restart", "no"]
+				}
+			},
+		},
+		"arg": {
+			menu: [{
+				caption: "Delete <arg>",
+				action: Xonomy.deleteElement
+			}, {
+				caption: "New <arg> before this",
+				action: Xonomy.newElementBefore,
+				actionParameter: "<arg name='some_name' default='default_value' />"
+			}, {
+				caption: "New <arg> after this",
+				action: Xonomy.newElementAfter,
+				actionParameter: "<arg name='some_name' default='default_value' />"
+			}],
+			canDropTo: ["launch","group","include"],
+			attributes: {
+			"name": {
+				asker: Xonomy.askString,
+				},
+			"default": {
+				asker: Xonomy.askString,
+				},
+			"value": {
+				asker: Xonomy.askString,
+				}
+			},
+		},
+		"param": {
+			menu: [{
+				caption: "Delete <param>",
+				action: Xonomy.deleteElement
+			}, {
+				caption: "New <param> before this",
+				action: Xonomy.newElementBefore,
+				actionParameter: "<arg name='some_name' default='default_value' />"
+			}, {
+				caption: "New <param> after this",
+				action: Xonomy.newElementAfter,
+				actionParameter: "<arg name='some_name' default='default_value' />"
+			}],
+			canDropTo: ["node","include"],
+			attributes: {
+			"name": {
+				asker: Xonomy.askString,
+				},
+			"type": {
+				asker: Xonomy.askString,
+				},
+			"value": {
+				asker: Xonomy.askString,
+				}
+			},
+		},
+		"node": {
+			menu: [{
+				caption: "Delete <node>",
+				action: Xonomy.deleteElement
+			}, {
+				caption: "New <node> before this",
+				action: Xonomy.newElementBefore,
+				actionParameter: "<node pkg='pkg_name' type='type_name' name='node_name' />"
+			}, {
+				caption: "New <node> after this",
+				action: Xonomy.newElementAfter,
+				actionParameter: "<node pkg='pkg_name' type='type_name' name='node_name' />"
+			}, {
+				caption: "Append an <param>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<param name='some_name' type='type' value='value' />"
+			}],
+			canDropTo: ["launch","group"],
+			attributes: {
+			"name": {
+				asker: Xonomy.askString,
+				},
+			"pkg": {
+				asker: Xonomy.askString,
+				},
+			"type": {
+				asker: Xonomy.askString,
+				}
+			},
+		},
+		"include": {
+			menu: [{
+				caption: "Delete <include>",
+				action: Xonomy.deleteElement
+			}],
+			attributes: {
+			"file": {
+				asker: Xonomy.askString,
+				}
+			},
+		},
+		"group": {
+			menu: [{
+					caption: "Add @ns=\"robot_name\"",
+					action: Xonomy.newAttribute,
+					actionParameter: {name: "ns", value: "something"},
+					hideIf: function(jsElement){
+					return jsElement.hasAttribute("ns");
+				}
+				}, {
+					caption: "Delete this <group>",
+					action: Xonomy.deleteElement
+				}, {
+					caption: "New <group> before this",
+					action: Xonomy.newElementBefore,
+					actionParameter: "<group ns='name_space'/>"
+				}, {
+					caption: "New <group> after this",
+					action: Xonomy.newElementAfter,
+					actionParameter: "<group ns='name_space'/>"
+				}, {
+				caption: "Append an <include>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<include file='file_name'/>"
+				}],
+			canDropTo: ["launch"],
+			attributes: {
+				"ns": {
+				asker: Xonomy.askString  //onload="start()"
+				}
+			}
+		}
+	}
+};
+//console.log("+======++++=========+++++======++++=======+++++========+");
+var xml = file_content.replace(/>(\n|\t|\s)*</g,'><').replace(/(\n|\t)*/g,'').replace(/\s\s+/g, ' ').replace(/['"]+/g, '\'');
+//console.log(xml);
+var editor=document.getElementById("editor");
+Xonomy.setMode("laic"); //"nerd"
+Xonomy.render(xml, editor, docSpec);
+}
+function saveTextAsFile()
+{
+
+
+	var fullPath = document.getElementById('upload').value;
+	if (fullPath) {
+		var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+		var filename = fullPath.substring(startIndex);
+		if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+			filename = filename.substring(1);
+		}
+	}
+	var textToWrite_unformatted=Xonomy.harvest();
+	var textToWrite = formatXml(textToWrite_unformatted);
+	console.log(textToWrite);
+	var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+	var fileNameToSaveAs = filename;
+
+	var downloadLink = document.createElement("a");
+	downloadLink.download = fileNameToSaveAs;
+	downloadLink.innerHTML = "Save File";
+	if (window.webkitURL != null)
+	{
+		// Chrome allows the link to be clicked
+		// without actually adding it to the DOM.
+		downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+	}
+	else
+	{
+		// Firefox requires the link to be added to the DOM
+		// before it can be clicked.
+		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+		downloadLink.onclick = destroyClickedElement;
+		downloadLink.style.display = "none";
+		document.body.appendChild(downloadLink);
+	}
+
+	downloadLink.click();
+}
+function destroyClickedElement(event)
+{
+	document.body.removeChild(event.target);
+}
+function formatXml(xml) {
+    var formatted = '';
+    var reg = /(>)(<)(\/*)/g;
+    xml = xml.replace(reg, '$1\r\n$2$3');
+    var pad = 0;
+    jQuery.each(xml.split('\r\n'), function(index, node) {
+        var indent = 0;
+        if (node.match( /.+<\/\w[^>]*>$/ )) {
+            indent = 0;
+        } else if (node.match( /^<\/\w/ )) {
+            if (pad != 0) {
+                pad -= 1;
+            }
+        } else if (node.match( /^<\w[^>]*[^\/]>.*$/ )) {
+            indent = 1;
+        } else {
+            indent = 0;
+        }
+
+        var padding = '';
+        for (var i = 0; i < pad; i++) {
+            padding += '  ';
+        }
+
+        formatted += padding + node + '\r\n';
+        pad += indent;
+    });
+
+    return formatted;
+}
+</script>
+</head>
+<body onload="disableBtn()">
+<h1>View and edit ros launch files easily!!</h1>
+<input id="upload" type='file' onchange='openFile(event)'><br> 
+<hr>
+<div id="editor" class="scroll-box" ></div>
+<button id="myBtn" onclick="saveTextAsFile()">Save File</button>
+</body>
+</html>
