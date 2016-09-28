@@ -12,6 +12,8 @@ Click <a href="https://github.com/webvenky/simple-airplane">here</a> to access t
 ## Synopsis
 
 This Simple ROS package provides a quick headstart for testing high level path planning / visual servoing algorithms on multiple fixed-wing unmanned aerial vehicles. This package requires Gazebo Simulation environment.
+This includes Gazebo plugins that emulate the kinematic constraints of a simple aircraft.
+More details will be added in the future. 
 
 ## Installation
 
@@ -28,4 +30,6 @@ Run the following commands in different terminal windows
 ```$ rostopic pub /suav1/cam_target geometry_msgs/Point -r 1 -- '2.0' '0.0' '0.0'```
 
 ```$ rostopic pub /suav1/cmd_vel geometry_msgs/Twist -r 1 -- '[1.0, 0.0, 0.0]' '[0.0, 0.0, 0.2]'```
+
+
 
