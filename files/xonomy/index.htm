@@ -64,6 +64,26 @@ var docSpec={
 				caption: "Append an <arg>",
 				action: Xonomy.newElementChild,
 				actionParameter: "<arg name='some_name' default='default_value' />"
+				},
+				{
+				caption: "Append a <node>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<node pkg='pkg_name' type='type_name' name='node_name' />"
+				},
+				{
+				caption: "Append a <param>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<param name='some_name' default='default_value' />"
+				},
+				{
+				caption: "Append a <remap>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<remap remap from='some_name' to='some_name' />"
+				},
+				{
+				caption: "Append a <env>",
+				action: Xonomy.newElementChild,
+				actionParameter: "<env name='environment_variable_name' value='environment_variable_value' />"
 				}]
 			},
 		"master": {
@@ -111,11 +131,11 @@ var docSpec={
 			}, {
 				caption: "New <param> before this",
 				action: Xonomy.newElementBefore,
-				actionParameter: "<arg name='some_name' default='default_value' />"
+				actionParameter: "<param name='some_name' default='default_value' />"
 			}, {
 				caption: "New <param> after this",
 				action: Xonomy.newElementAfter,
-				actionParameter: "<arg name='some_name' default='default_value' />"
+				actionParameter: "<param name='some_name' default='default_value' />"
 			}],
 			canDropTo: ["node","include"],
 			attributes: {
