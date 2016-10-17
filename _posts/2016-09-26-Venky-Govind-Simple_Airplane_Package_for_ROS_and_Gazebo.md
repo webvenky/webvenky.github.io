@@ -7,8 +7,6 @@ comments: true
 
 Simple Airplane package for ROS and Gazebo
 
-Click <a href="https://github.com/webvenky/simple-airplane">here</a> to access the web editor.
-
 ## Synopsis
 
 This Simple ROS package provides a quick headstart for testing high level path planning / visual servoing algorithms on multiple fixed-wing unmanned aerial vehicles. This package requires Gazebo Simulation environment.
