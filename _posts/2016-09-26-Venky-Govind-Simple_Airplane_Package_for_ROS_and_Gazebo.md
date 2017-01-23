@@ -31,7 +31,7 @@ Run the following commands in different terminal windows
 
 ```$ rostopic pub /suav1/cmd_vel geometry_msgs/Twist -r 1 -- '[1.0, 0.0, 0.0]' '[0.0, 0.0, 0.2]'```
 
-Here's a video of a simulation of aerial surveillance in urban regions.
+Here's a video of a simulation of aerial surveillance in urban regions  (Click to play)..
 
 [![Simulation of UAV surveillance with ROS and Gazebo](http://img.youtube.com/vi/W2Pnz9mk2l8/0.jpg)](https://youtu.be/W2Pnz9mk2l8 "Simulation of UAV surveillance with ROS and Gazebo")    
 
