@@ -33,7 +33,11 @@ Run the following commands in different terminal windows
 
 Here's a video of a simulation of aerial surveillance in urban regions  (Click to play)..
 
-[![Simulation of UAV surveillance with ROS and Gazebo](http://img.youtube.com/vi/W2Pnz9mk2l8/0.jpg)](https://youtu.be/W2Pnz9mk2l8 "Simulation of UAV surveillance with ROS and Gazebo")    
+<!--[![Simulation of UAV surveillance with ROS and Gazebo](http://img.youtube.com/vi/W2Pnz9mk2l8/0.jpg)](https://youtu.be/W2Pnz9mk2l8 "Simulation of UAV surveillance with ROS and Gazebo")    -->
+
+<div id="outer" style="width:100%; margin:0 auto;text-align:center">  
+  <iframe width="480" height="320" src="http://www.youtube.com/embed/W2Pnz9mk2l8" frameborder="0" allowfullscreen></iframe>
+</div>
 
 
 

@@ -13,7 +13,9 @@ Determining the view direction for a gimballed camera onboard an S-UAV is critic
 
 Here's a video of a simulation of aerial surveillance in urban regions (Click to play).
 
-[![Simulation of UAV surveillance with ROS and Gazebo](http://img.youtube.com/vi/3aeWXLxOzbw/0.jpg)](https://youtu.be/oHvSGMqYlqQ "Simulation of Target Search and Tracking using Particle Filters")    
+<!--[![Simulation of UAV surveillance with ROS and Gazebo](http://img.youtube.com/vi/3aeWXLxOzbw/0.jpg)](https://youtu.be/oHvSGMqYlqQ "Simulation of Target Search and Tracking using Particle Filters")    -->
 
-
+<div id="outer" style="width:100%; margin:0 auto;text-align:center">  
+  <iframe align="center" width="480" height="320" src="http://www.youtube.com/embed/oHvSGMqYlqQ" frameborder="0" allowfullscreen></iframe>
+</div>
 
