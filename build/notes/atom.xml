@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Notes from Webvenky</title>
+ <link href="http://webvenky.github.io/notes/atom.xml" rel="self"/>
+ <link href="http://webvenky.github.io/notes/"/>
+ <updated>2017-04-26T20:46:26+08:00</updated>
+ <id>http://webvenky.github.io/notes/</id>
+ <author>
+   <name>Venky Govind</name>
+   <email>webvenky@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Simulation of Target Search and Tracking using Particle Filters</title>
+   <link href="http://webvenky.github.io/notes/2016/12/25/Venky-Govind-Simulation_of_target_search_using_particle_filters"/>
+   <updated>2016-12-25T00:00:00+08:00</updated>
+   <id>http://webvenky.github.io/notes/notes/2016/12/25/Venky-Govind-Simulation_of_target_search_using_particle_filters</id>
+   <content type="html">&lt;p&gt;Simulation of Target Search and Tracking using Particle Filters&lt;/p&gt;
+
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+
+&lt;p&gt;Determining the view direction for a gimballed camera onboard an S-UAV is critical for aerial surveillance tasks and search-and-rescue missions. We have used the Recursive Bayesian Filter to track the target. We have developed the particle filter method that implements an approximation of the Recursive Bayesian Filter technique. We also developed the k-medoids clustering method for selecting the optimal goal points for search path planning and view direction selection within the visible regions to maximize the chances of seeing a target. Several simulations were performed: without the target, with a static target, target moving in a square path and target moving randomly along the streets. The S-UAV tries to explore and does a full search of the entire region if it loses the target. Also, it carefully chooses the view direction only to clear the possible target locations. It is also able to estimate of the target at a future time through the target’s motion model. It attempts to regain sight of the target from the other side of the obstacle when it loses the sight of the target from one side. All these useful features of this method can greatly improve the search task efficiency during a real-time implementation of aerial surveillance. This can also be used with multiple UAVs where the particle distribution will be shared among the different UAVs and other probable locations of targets can be assigned to other UAVs.&lt;/p&gt;
+
+&lt;p&gt;Here’s a video of a simulation of aerial surveillance in urban regions (Click to play).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/oHvSGMqYlqQ&quot; title=&quot;Simulation of Target Search and Tracking using Particle Filters&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/3aeWXLxOzbw/0.jpg&quot; alt=&quot;Simulation of UAV surveillance with ROS and Gazebo&quot; /&gt;&lt;/a&gt;    &lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Simple Airplane package for ROS and Gazebo</title>
+   <link href="http://webvenky.github.io/notes/2016/09/26/Venky-Govind-Simple_Airplane_Package_for_ROS_and_Gazebo"/>
+   <updated>2016-09-26T00:00:00+08:00</updated>
+   <id>http://webvenky.github.io/notes/notes/2016/09/26/Venky-Govind-Simple_Airplane_Package_for_ROS_and_Gazebo</id>
+   <content type="html">&lt;p&gt;Simple Airplane package for ROS and Gazebo&lt;/p&gt;
+
+&lt;p&gt;The repository can be accessed at &lt;a href=&quot;https://github.com/webvenky/simple-airplane&quot;&gt;https://github.com/webvenky/simple-airplane&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;synopsis&quot;&gt;Synopsis&lt;/h2&gt;
+
+&lt;p&gt;This Simple ROS package provides a quick headstart for testing high level path planning / visual servoing algorithms on multiple fixed-wing unmanned aerial vehicles. This package requires Gazebo Simulation environment.
+This includes Gazebo plugins that emulate the kinematic constraints of a simple aircraft.
+More details will be added in the future. &lt;/p&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Just place this ROS package under the src folder of your catkin workspace before running &lt;code&gt;catkin_make&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;(Tested with ROS-Indigo and Gazebo 2.3)&lt;/p&gt;
+
+&lt;h2 id=&quot;example&quot;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;Run the following commands in different terminal windows&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ roslaunch simple_airplane_gazebo simple_airplane_empty_world.launch&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ rostopic pub /suav1/cam_target geometry_msgs/Point -r 1 -- '2.0' '0.0' '0.0'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ rostopic pub /suav1/cmd_vel geometry_msgs/Twist -r 1 -- '[1.0, 0.0, 0.0]' '[0.0, 0.0, 0.2]'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s a video of a simulation of aerial surveillance in urban regions  (Click to play)..&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/W2Pnz9mk2l8&quot; title=&quot;Simulation of UAV surveillance with ROS and Gazebo&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/W2Pnz9mk2l8/0.jpg&quot; alt=&quot;Simulation of UAV surveillance with ROS and Gazebo&quot; /&gt;&lt;/a&gt;    &lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Web Editor for Roslaunch</title>
+   <link href="http://webvenky.github.io/notes/2016/03/05/Venky-Govind-Web_Editor_for_roslaunch"/>
+   <updated>2016-03-05T00:00:00+08:00</updated>
+   <id>http://webvenky.github.io/notes/notes/2016/03/05/Venky-Govind-Web_Editor_for_roslaunch</id>
+   <content type="html">&lt;p&gt;&lt;b&gt; Web Editor for ROS launch files  &lt;/b&gt;&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;
+You can now edit the roslaunch files from your favorite browser. I have used the package xonomy and javescript queries&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;../../../../../files/xonomy/&quot;&gt;Click here&lt;/a&gt; to access the web editor.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Abstract of my research</title>
+   <link href="http://webvenky.github.io/notes/2016/03/01/Venky-Govind-Abstract"/>
+   <updated>2016-03-01T00:00:00+08:00</updated>
+   <id>http://webvenky.github.io/notes/notes/2016/03/01/Venky-Govind-Abstract</id>
+   <content type="html">&lt;p&gt;&lt;b&gt; Abstract &lt;/b&gt;&lt;/p&gt;
+
+&lt;!-- &lt;p style=&quot;text-align:justify&quot;&gt;
+Small-Unmanned Aerial Vehicles (S-UAVs) have emerged as low-cost alternatives for aerial surveillance over cluttered environments such as forests and urban regions. However, they provide limited coverage owing to their low altitudes and short endurance. Therefore, a quick and effective surveillance necessitates optimal flying paths, maximizing ground visibility. The occlusion of ground points due to obstacles and vegetation is significant and has to be considered for designing the flight path. My research proposes probabilistic sensing model, faster visibility computations and also considers kinematic constraints of the vehicle to determine near-optimal flight paths for multiple S-UAVs. Simulation studies conducted on synthetic terrains and a reconstructed terrain, from satellite data of tree-cover and Digital Elevation Model (DEM), show the effectiveness of the proposed methods in improving the ground visibility.
+&lt;/p&gt; --&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;
+Small-Unmanned Aerial Vehicles (S-UAVs) provide significant advantages in several civilian applications such as search-and-rescue
+operations in disaster regions, anti-poaching operations, and policing
+for civil security. In essence, they provide a low-cost alternative for
+obtaining a better situational awareness through a bird’s-eye view of
+unreachable locations. However, their effective coverage area is starkly
+reduced by the presence of occlusions in the field-of-view(FOV) of the
+sensor. In this work, to obtain a quick and effective aerial surveillance, three path planning strategies are developed that enhancesground/target visibility.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify&quot;&gt;
+The first path planning approach improves the ground visibility over
+large cluttered environments with vegetation. Visibility occlusions
+are considered in two forms: partial occlusions due to vegetation
+and complete occlusions due to buildings and terrains. The gradual
+reduction in visibility along the line-of-sight(LOS) due to foliage
+in a forested region is modeled probabilistically using the crown
+cover density of that region. To obtain near-uniform visibility of the
+ground points, the waypoints (also the imaging points) are set as the
+generator points of a Centroidal Voronoi Tessellation(CVT). The CVT
+is computed with a combination of the forest crown cover density and
+the topographical profile as the density distribution function. The
+Dubin’s flight path through these waypoints is solved by an improved
+spiral-alternating algorithm. Visibility with the proposed method
+is computed for: (1) a synthetically generated forest terrain, and
+(2) actual satellite tree cover data &amp;amp; digital elevation model. It is
+then compared with the visibility from regular grid based observation
+points.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify&quot;&gt;
+The second path planning approach optimizes both the duration of
+a target visibility and path length in an urban environment. For an
+urban region modelled in the form of 3D occupancy grids, determination of from-point visibility is computationally very expensive. In this
+work, we utilize a parallel Fast-marching method(FMM) to compute
+the 3D visibility for real-time applications. This work also attempts
+to standardize the selection of urban models for simulation studies by
+different researchers. A Visibility-Based Fast-Marching field is constructed to function as the cost field for the path planning. A 2-step
+finite horizon local path planner is also proposed that incorporates
+the kinematic constraints of the UAV and collision avoidance. This
+algorithm is compared with a simple shortest path planner.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify&quot;&gt;
+Another path planning strategy is proposed for searching and tracking
+a moving target in urban environments. An algorithm to determine
+the camera footprint for a given view direction from the S-UAV is
+developed. The target detection is achieved through color segmentation and the target is localized in the world coordinate system with
+photogrammetry. It is assumed that the target’s position is not known
+to the S-UAV and it estimates the target location using particle filters.
+We also developed the k-medoids clustering method for selecting the
+best goal points for path planning and best view directions for the
+two-axis gimballed camera.&lt;/p&gt;
+&lt;p style=&quot;text-align:justify&quot;&gt;
+Highly realistic simulations are performed using the Robot Operating System(ROS) and the Gazebo platform. The results show the
+effectiveness of the proposed path planning methods in enhancing the
+visibility of targets in cluttered environments (buildings and trees).
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;
+Concepts Used:
+	&lt;ul&gt;
+	&lt;li&gt;Path planning - Sampling based path planners, 2 step finite horizon path planner, Clustered Spiral Alternating Path planner&lt;/li&gt;
+	&lt;li&gt;Waypoint deployment - Centroidal Voronoi Tessellations &lt;/li&gt;
+	&lt;li&gt;Robot Dynamics -  Fixed wing UAV model, Dubin's path, Deformable B-Spline paths &lt;/li&gt;
+	&lt;li&gt;Robot Localization/ Tracking - Recursive Bayesian Filters, Particle filters &lt;/li&gt;
+	&lt;li&gt;Visibility Computation - Fast Marching Methods&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Venky Govind, Launches Site</title>
+   <link href="http://webvenky.github.io/notes/2015/10/15/Venky-Govind-site-launched"/>
+   <updated>2015-10-15T00:00:00+08:00</updated>
+   <id>http://webvenky.github.io/notes/notes/2015/10/15/Venky-Govind-site-launched</id>
+   <content type="html">&lt;p&gt;Well. Finally got around to putting this website together. Neat thing about it - powered by &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; and I can use Markdown to author my posts. It actually is a lot easier than I thought it was going to be.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>
