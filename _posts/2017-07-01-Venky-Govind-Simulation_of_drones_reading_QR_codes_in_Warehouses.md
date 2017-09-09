@@ -8,6 +8,8 @@ comments: true
 
 # Simulation of drones reading QR codes in Ware-houses
 
+The repository can be accessed at [https://github.com/webvenky/qr_scanning_drones](https://github.com/webvenky/qr_scanning_drones)
+
 ## System Requirements
 1. **Install ROS and gazebo in the system**
 	I have used Ubuntu 14.04, ROS-indigo and Gazebo 7. Refer to http://wiki.ros.org/ROS/Installation for instructions.
