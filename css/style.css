@@ -14,9 +14,9 @@ blockquote p { font-size: 16px; line-height: 1.6em; }
 .vcard-header { font-family: 'Montserrat', Helvetica, sans-serif; font-weight: normal; margin-bottom: 30px; }
 
 /* Definition List */
-dt { display:block; float:left; width:5%; text-align: center; font-family: 'Montserrat', Helvetica, sans-serif; text-transform: uppercase; font-weight: normal;  }
+dt { display:block; float:left; width:10%; text-align: center; font-family: 'Montserrat', Helvetica, sans-serif; text-transform: uppercase; font-weight: normal;  }
 dt:after{content:':';}
-dd { display:block; margin-left: 1.2cm;}
+dd { display:block; margin-left: 10%;}
 
 /* Navigation */
 h3.text-muted a {text-decoration: none; color: #999999; }
