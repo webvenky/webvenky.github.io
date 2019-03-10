@@ -101,3 +101,12 @@ pre.prettyprint { padding: 10px !important; margin: 40px; font-size: 12px;}
 	font-family: 'Montserrat', Helvetica, sans-serif; }
 
 
+  .progress-bar
+  {
+  background-color: #3888C8 !important;
+  }
+
+  tr.spaceUnder>td {
+    padding-bottom: 1em;
+  }
+  
