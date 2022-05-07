@@ -1,0 +1,78 @@
+I"Â<h2 id="test-post-for-quick-blogging">Test post for quick blogging</h2>
+
+<ol>
+  <li>Git clone your website data.</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">git clone https://github.com/webvenky/webvenky.github.io.git</code></p>
+
+<ol>
+  <li>Install Jekyll</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install ruby-full build-essential zlib1g-dev
+
+echo '# Install Ruby Gems to ~/gems' &gt;&gt; ~/.bashrc
+echo 'export GEM_HOME="$HOME/gems"' &gt;&gt; ~/.bashrc
+echo 'export PATH="$HOME/gems/bin:$PATH"' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+
+gem install jekyll bundler
+
+</code></pre></div></div>
+
+<ol>
+  <li>Run Local Server</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll serve . --port 5000</code></p>
+
+<ol>
+  <li>Go to a browser and type</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">localhost:5000</code></p>
+
+<p>This gives a preview of the website.</p>
+
+<ol>
+  <li>
+    <p>Open the github package in vscode</p>
+  </li>
+  <li>
+    <p>Go to console and run this script: <code class="language-plaintext highlighter-rouge">bash create_post.sh &lt;Post_title_string_with_Unscores_instead_of_Whitespaces&gt;</code></p>
+  </li>
+</ol>
+
+<p>The script contains:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+# Create a new jekyll post with the current date and the given title
+# and print the path to the post file.
+#
+# author: andreasl
+
+post_title="$*"
+[ -z "$post_title" ] &amp;&amp; printf 'Error: Script needs a post title.\n' &amp;&amp; exit 1
+
+repo_dir="$(git rev-parse --show-toplevel)"
+post_date="$(date '+%Y-%m-%d')"
+title_slug="$(printf -- "$post_title" | sed -E 's/[^a-zA-Z0-9]+/-/g' | tr "[:upper:]" "[:lower:]")"
+post_path="${repo_dir}/_posts/${post_date}-Venky-Govind-${title_slug}.md"
+[ -e "$post_path" ] &amp;&amp; printf 'Error: Post exists already.\n' &amp;&amp; exit 2
+
+IFS= read -r -d '' front_matter &lt;&lt; EOF
+---
+layout: post
+title: "${*//_/ }"
+date: ${post_date}
+tags: []
+comments: false
+---
+EOF
+
+printf -- "${front_matter}" &gt; "${post_path}"
+
+printf -- '%s\n' "${post_path}"
+
+</code></pre></div></div>
+:ET

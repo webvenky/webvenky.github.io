@@ -1,0 +1,35 @@
+I"Z<p>Simple Airplane package for ROS and Gazebo</p>
+
+<p>The repository can be accessed at <a href="https://github.com/webvenky/simple-airplane">https://github.com/webvenky/simple-airplane</a></p>
+
+<h2 id="synopsis">Synopsis</h2>
+
+<p>This Simple ROS package provides a quick headstart for testing high level path planning / visual servoing algorithms on multiple fixed-wing unmanned aerial vehicles. This package requires Gazebo Simulation environment.
+This includes Gazebo plugins that emulate the kinematic constraints of a simple aircraft.
+More details will be added in the future.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Just place this ROS package under the src folder of your catkin workspace before running <code class="language-plaintext highlighter-rouge">catkin_make</code></p>
+
+<p>(Tested with ROS-Indigo and Gazebo 2.3)</p>
+
+<h2 id="example">Example</h2>
+
+<p>Run the following commands in different terminal windows</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ roslaunch simple_airplane_gazebo simple_airplane_empty_world.launch</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">$ rostopic pub /suav1/cam_target geometry_msgs/Point -r 1 -- '2.0' '0.0' '0.0'</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">$ rostopic pub /suav1/cmd_vel geometry_msgs/Twist -r 1 -- '[1.0, 0.0, 0.0]' '[0.0, 0.0, 0.2]'</code></p>
+
+<p>Here’s a video of a simulation of aerial surveillance in urban regions  (Click to play)..</p>
+
+<!--[![Simulation of UAV surveillance with ROS and Gazebo](http://img.youtube.com/vi/W2Pnz9mk2l8/0.jpg)](https://youtu.be/W2Pnz9mk2l8 "Simulation of UAV surveillance with ROS and Gazebo")    -->
+
+<div id="outer" style="width:100%; margin:0 auto;text-align:center">  
+  <iframe width="480" height="320" src="http://www.youtube.com/embed/W2Pnz9mk2l8" frameborder="0" allowfullscreen=""></iframe>
+</div>
+
+:ET
