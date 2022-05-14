@@ -108,14 +108,14 @@ var SlotMachine = function () {
       this.element.appendChild(this.container);
 
       this._fakeFirstTile = this.tiles[this.tiles.length - 1].cloneNode(true);
-      this.container.appendChild(this._fakeFirstTile);
+      // this.container.appendChild(this._fakeFirstTile);
 
       this.tiles.forEach(function (tile) {
         _this2.container.appendChild(tile);
       });
 
       this._fakeLastTile = this.tiles[0].cloneNode(true);
-      this.container.appendChild(this._fakeLastTile);
+      // this.container.appendChild(this._fakeLastTile);
     }
   }, {
     key: '_setBounds',
