@@ -26,6 +26,6 @@ intelligent features in the robot such as obstacle detection and auto-charging.
 ## Demo video:
 
 <div id="outer" style="width:100%; margin:0 auto;text-align:center">  
-  <iframe align="center" width="640" height="480" src="http://www.youtube.com/embed/J2A6JdlZ36E" frameborder="0" allowfullscreen></iframe>
+  <iframe align="center" width="640" height="480" src="https://www.youtube.com/embed/J2A6JdlZ36E" frameborder="0" allowfullscreen></iframe>
 </div>
 <br/>

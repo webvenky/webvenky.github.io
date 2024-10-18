@@ -93,6 +93,6 @@ The parameters of the depth camera (`libgazebo_ros_openni_kinect.so` plugin) can
 
 <h2>Video of the simulation:</h2>
 <div id="outer" style="width:100%; margin:0 auto;text-align:center">  
-  <iframe align="center" width="640" height="480" src="http://www.youtube.com/embed/f_W1JyT0N08" frameborder="0" allowfullscreen></iframe>
+  <iframe align="center" width="640" height="480" src="https://www.youtube.com/embed/f_W1JyT0N08" frameborder="0" allowfullscreen></iframe>
 </div>
 <br/>

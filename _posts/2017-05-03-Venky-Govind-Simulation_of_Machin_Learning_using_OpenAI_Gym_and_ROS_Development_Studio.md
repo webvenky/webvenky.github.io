@@ -76,7 +76,7 @@ As the number of episodes increases, we will see that the robot's mean rewards a
 
 <h2>Video describing the procedure to run OpenAI Gym on RDS</h2>
 <div id="outer" style="width:100%; margin:0 auto;text-align:center">  
-  <iframe align="center" width="480" height="320" src="http://www.youtube.com/embed/5Cp9ExbSZsA" frameborder="0" allowfullscreen></iframe>
+  <iframe align="center" width="480" height="320" src="https://www.youtube.com/embed/5Cp9ExbSZsA" frameborder="0" allowfullscreen></iframe>
 </div>
 <br/>
 I hope you were able to follow the tutorial.  So, that's all folks. It's now up to you to develop and test reinforcement learning algorithms in OpenAI Gym and RDS.
