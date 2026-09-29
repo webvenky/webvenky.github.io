@@ -1,0 +1,70 @@
+name: Build and deploy website and atlas
+on:
+  push:
+    branches: [master]
+  repository_dispatch:
+    types: [atlas-notes-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - uses: actions/configure-pages@v5
+      - run: npm ci
+      - run: npm test
+      - run: npm run atlas:setup
+      - run: npx playwright install --with-deps chromium
+      - name: Verify privacy and rendered features
+        run: node scripts/integration-check.mjs
+      - name: Build existing website
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --destination _site
+      - name: Check out authoritative notes
+        uses: actions/checkout@v4
+        with:
+          repository: webvenky/rai_notes
+          ref: main
+          path: .atlas-cache/notes
+          token: ${{ secrets.ATLAS_NOTES_READ_TOKEN || github.token }}
+          persist-credentials: false
+      - name: Record notes revision
+        run: git -C .atlas-cache/notes rev-parse HEAD
+      - name: Build atlas into combined artifact
+        run: npm run atlas:build -- .atlas-cache/notes/RAI_Notes_Test/rai_notes_obsidian_quartz
+      - name: Validate privacy and subpath
+        run: node scripts/validate-artifact.mjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment

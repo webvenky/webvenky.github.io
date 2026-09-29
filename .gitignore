@@ -1,2 +1,5 @@
 _site/
 .jekyll_cache/
+.jekyll-cache/
+.atlas-cache/
+node_modules/

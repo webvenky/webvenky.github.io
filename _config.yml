@@ -4,3 +4,16 @@ permalink: /notes/:year/:month/:day/:title
 
 kramdown:
   math_engine: mathjax
+
+# Build tooling and private staging must never become Jekyll static files.
+exclude:
+  - atlas
+  - scripts
+  - docs
+  - node_modules
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - AGENTS.md
+  - personal_ws.code-workspace

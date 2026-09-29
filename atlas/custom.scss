@@ -1,0 +1,11 @@
+@use "./base.scss";
+
+.page-title { font-family: "Montserrat", Helvetica, sans-serif; font-size: 1.35rem; }
+article { line-height: 1.8; }
+article h1 { font-size: 1.8rem; }
+pre { font-size: .88rem; }
+.graph { margin-top: 1.5rem; }
+@media (max-width: 800px) {
+  .page-title { font-size: 1rem; }
+  article h1 { font-size: 1.5rem; overflow-wrap: anywhere; }
+}

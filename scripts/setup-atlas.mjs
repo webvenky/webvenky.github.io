@@ -1,0 +1,11 @@
+import { existsSync, readFileSync, copyFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+const pin = JSON.parse(readFileSync('atlas/version.json'));
+const cwd = '.atlas-cache/quartz';
+const run = (cmd, args, dir) => execFileSync(cmd, args, { cwd: dir, stdio: 'inherit', shell: process.platform === 'win32' && cmd === 'npm.cmd' });
+if (!existsSync(cwd)) run('git', ['clone', '--branch', pin.release, '--depth', '1', pin.repository, cwd]);
+const actual = execFileSync('git', ['rev-parse', 'HEAD'], { cwd, encoding: 'utf8' }).trim();
+if (actual !== pin.commit) throw new Error(`Quartz pin mismatch: expected ${pin.commit}, got ${actual}. Use a fresh .atlas-cache/quartz checkout.`);
+for (const name of ['quartz.config.ts', 'quartz.layout.ts']) copyFileSync(`atlas/${name}`, `${cwd}/${name}`);
+copyFileSync('atlas/custom.scss', `${cwd}/quartz/styles/custom.scss`);
+run(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['ci'], cwd);

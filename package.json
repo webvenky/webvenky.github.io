@@ -1,0 +1,13 @@
+{
+  "name": "venky-website-build",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "atlas:setup": "node scripts/setup-atlas.mjs",
+    "atlas:build": "node scripts/build-atlas.mjs",
+    "test": "node --test scripts/prepare-content.test.mjs",
+    "preview": "node scripts/preview.mjs"
+  },
+  "dependencies": { "gray-matter": "4.0.3", "serve-handler": "6.1.6" },
+  "devDependencies": { "@playwright/test": "1.56.1" }
+}
