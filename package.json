@@ -8,6 +8,11 @@
     "test": "node --test scripts/prepare-content.test.mjs",
     "preview": "node scripts/preview.mjs"
   },
-  "dependencies": { "gray-matter": "4.0.3", "serve-handler": "6.1.6" },
-  "devDependencies": { "@playwright/test": "1.56.1" }
+  "dependencies": {
+    "gray-matter": "4.0.3",
+    "serve-handler": "6.1.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
 }
