@@ -15,6 +15,7 @@ function fixture() {
   put('missing-flag.md', 'Unpublished by default');
   put('string-flag.md', '---\npublish: "true"\n---\nNot a boolean');
   put('draft.md', '---\npublish: true\ndraft: true\n---\nDraft');
+  put('string-draft.md', '---\npublish: true\ndraft: "true"\npublic_attachments: [Attachments/secret.png]\n---\n![[Attachments/secret.png]]');
   put('Templates/leak.md', '---\npublish: true\n---\nExcluded template');
   put('.obsidian/leak.json', 'PRIVATE_CONFIG');
   put('Attachments/secret.png', 'PRIVATE_ATTACHMENT');

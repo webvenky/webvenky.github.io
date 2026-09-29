@@ -3,3 +3,5 @@ _site/
 .jekyll-cache/
 .atlas-cache/
 node_modules/
+vendor/
+.bundle/

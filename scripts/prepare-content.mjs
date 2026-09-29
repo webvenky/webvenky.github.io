@@ -21,7 +21,7 @@ export function prepareContent(source, destination) {
   const ids = new Set();
   for (const name of all.filter(n => /\.md$/i.test(n) && !/^(README|AGENTS)\.md$/i.test(path.basename(n)))) {
     const parsed = matter(readFileSync(path.join(source, name), 'utf8'));
-    if (parsed.data.publish !== true || parsed.data.draft === true) continue;
+    if (parsed.data.publish !== true || (parsed.data.draft !== undefined && parsed.data.draft !== false)) continue;
     for (const value of [parsed.data.permalink, ...([parsed.data.aliases ?? []].flat())].filter(Boolean)) {
       if (typeof value !== 'string' || value.includes('\\') || value.startsWith('/') || value.split('/').includes('..') || /^[a-z]+:/i.test(value)) throw new Error(`Unsafe alias/permalink in ${name}`);
     }

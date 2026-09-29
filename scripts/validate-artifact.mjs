@@ -11,7 +11,7 @@ assert.ok(existsSync(path.join(atlas, 'index.html')), 'Atlas landing page missin
 const paths = walk(root);
 for (const file of paths) {
   const relative = path.relative(root, file).replaceAll('\\', '/');
-  assert.ok(!/(^|\/)(\.atlas-cache|\.obsidian|Templates|Inbox|node_modules|scripts|atlas)(\/|$)/i.test(relative), `Build/private directory leaked: ${relative}`);
+  assert.ok(!/(^|\/)(\.atlas-cache|\.obsidian|Templates|Inbox|node_modules|vendor|scripts|atlas)(\/|$)/i.test(relative), `Build/private directory leaked: ${relative}`);
   assert.ok(!/\.(md|ya?ml|tsx?|lock)$/i.test(relative), `Source file leaked: ${relative}`);
   if (/\.(html|json|xml|txt)$/i.test(file)) {
     assert.ok(!/PRIVATE_SENTINEL|PRIVATE_ATTACHMENT|PRIVATE_CONFIG/.test(readFileSync(file, 'utf8')), `Privacy sentinel leaked: ${relative}`);
